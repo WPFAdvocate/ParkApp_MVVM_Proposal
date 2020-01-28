@@ -8,8 +8,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <StackPanel>
-        <mah:MetroHeader Header="Connectionstring">
-            <TextBox Text="{Binding Source={StaticResource Settings}, Path=Default.ConnectionString}" />
-        </mah:MetroHeader>
+
     </StackPanel>
 </UserControl>

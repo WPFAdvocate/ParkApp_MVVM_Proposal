@@ -9,7 +9,7 @@ namespace PrakApp.Model
 
 		private int _ID;
 
-		public int ID
+		public int Number
 		{
 			get { return _ID; }
 			set { _ID = value; RaisePropertyChanged("ID"); }
@@ -32,7 +32,7 @@ namespace PrakApp.Model
 
 		public override string ToString()
 		{
-			return $"{ID.ToString("00")}: {RegistrationCode} ({Name})";
+			return $"{Number.ToString("00")}: {RegistrationCode} ({Name})";
 		}
 	}
 }

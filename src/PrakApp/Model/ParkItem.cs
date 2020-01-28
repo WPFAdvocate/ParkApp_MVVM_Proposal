@@ -1,7 +1,9 @@
 ﻿using PrakApp.Views;
 using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
@@ -10,17 +12,14 @@ namespace PrakApp.Model
 	public class ParkItem : BaseClass
 	{
 
-		public ParkItem()
-		{
 
-		}
-
-public ParkItem(SQLiteDataReader reader)
+public ParkItem(SqlDataReader reader)
 {
-	ID = reader.GetLong("ID");
+	ID = reader.GetInt("Number");
 	Number = reader.GetInt("Number");
 	Name = reader.GetString("Name");
-	ParkedVehicle = ViewModel.Vehicles.FirstOrDefault(x => x.ID == reader.GetLong("ParkedVehicle", -1));
+	ParkedVehicle = ViewModel.Vehicles.FirstOrDefault(x => x.Number == reader.GetLong("ParkedVehicle", -1));
+			
 }
 
 		private long _ID;

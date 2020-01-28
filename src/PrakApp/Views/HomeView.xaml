@@ -34,18 +34,19 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type model:ParkItem}">
-                    <Button Width="70"
-                            Height="150"
+                    <Button Width="100"
+                            Height="180"
                             Margin="10,0"
                             ToolTip="{Binding}"
                             Command="{Binding Park_Command}"
                             CommandParameter="{Binding}">
                         <StackPanel>
+                            <TextBlock Text="Parking" VerticalAlignment="Top" Margin="0,0,0,20" FontSize="17"/>
                             <TextBlock Text="{Binding ID}"
                                        FontSize="20"
                                        FontWeight="Bold"
                                        TextAlignment="Center" />
-                            <TextBlock Text="{Binding Name, StringFormat='Name: {0}'}" TextAlignment="Center" />
+                            <TextBlock Text="{Binding Name, StringFormat=' {0}'}" TextAlignment="Center" TextWrapping="Wrap" />
                             <TextBlock Text="{Binding ParkedVehicle, TargetNullValue='F R E E'}" TextAlignment="Center" />
                         </StackPanel>
                         <Button.Style>
@@ -85,18 +86,19 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate DataType="{x:Type model:ParkItem}">
-                    <Button Width="70"
-                            Height="150"
+                    <Button Width="100"
+                            Height="180"
                             Margin="10,0"
                             ToolTip="{Binding}"
                             Command="{Binding Dock_Command}"
                             CommandParameter="{Binding}">
                         <StackPanel>
+                            <TextBlock Text="Dock" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="17"/>
                             <TextBlock Text="{Binding ID, StringFormat='00'}"
                                        FontSize="20"
                                        FontWeight="Bold"
                                        TextAlignment="Center" />
-                            <TextBlock Text="{Binding Name, StringFormat='Name: {0}'}" TextAlignment="Center" />
+                            <TextBlock Text="{Binding Name, StringFormat=' {0}'}" TextAlignment="Center" TextWrapping="Wrap" />
                             <TextBlock Text="{Binding ParkedVehicle, TargetNullValue='F R E E'}" TextAlignment="Center" />
                         </StackPanel>
                         <Button.Style>

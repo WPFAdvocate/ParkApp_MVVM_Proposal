@@ -2,7 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data.SQLite;
+using System.Data;
+using System.Data.SqlClient;
 using System.Text;
 
 namespace PrakApp.Model
@@ -19,10 +20,10 @@ namespace PrakApp.Model
             //    ParkItems.Add(new ParkItem { ID = i, Name = char.ConvertFromUtf32(i + 64) });
             //    DockItems.Add(new ParkItem { ID = i, Name = char.ConvertFromUtf32(i + 64 + 15) });
             //}
-
-            Vehicles.Add(new Vehicle() { ID = 1, Name = "ABC", RegistrationCode = "abc-123" });
-            Vehicles.Add(new Vehicle() { ID = 2, Name = "DEF", RegistrationCode = "def-456" });
-            Vehicles.Add(new Vehicle() { ID = 3, Name = "GHI", RegistrationCode = "ghi-789" });
+            GetParkAndDockItems();
+            Vehicles.Add(new Vehicle() { Number = 1, Name = "ABC", RegistrationCode = "abc-123" });
+            Vehicles.Add(new Vehicle() { Number = 2, Name = "DEF", RegistrationCode = "def-456" });
+            Vehicles.Add(new Vehicle() { Number = 3, Name = "GHI", RegistrationCode = "ghi-789" });
 
         }
 
@@ -31,11 +32,11 @@ namespace PrakApp.Model
             ParkItems.Clear();
             DockItems.Clear();
 
-            using var conn = new SQLiteConnection(Settings.Default.ConnectionString);
+            using var conn = new SqlConnection(Settings.Default.ConnectionString);
 
             conn.Open();
             string qry = "SELECT * FROM Parking;";
-            var cmd = new SQLiteCommand(qry, conn);
+            var cmd = new SqlCommand(qry, conn);
 
             var reader = cmd.ExecuteReader();
 
@@ -44,7 +45,7 @@ namespace PrakApp.Model
                 var parkItem = new ParkItem(reader);
 
                 // Place item based on Type
-                switch (reader.GetString("SlotType"))
+                switch (reader["slotType"].ToString())
                 {
                     case "P":
                         ParkItems.Add(parkItem);
