@@ -37,6 +37,7 @@
                     <Button Width="70"
                             Height="150"
                             Margin="10,0"
+                            ToolTip="{Binding}"
                             Command="{Binding Park_Command}"
                             CommandParameter="{Binding}">
                         <StackPanel>
@@ -45,7 +46,7 @@
                                        FontWeight="Bold"
                                        TextAlignment="Center" />
                             <TextBlock Text="{Binding Name, StringFormat='Name: {0}'}" TextAlignment="Center" />
-                            <TextBlock Text="{Binding IsFree, StringFormat='Free: {0}'}" TextAlignment="Center" />
+                            <TextBlock Text="{Binding ParkedVehicle, TargetNullValue='F R E E'}" TextAlignment="Center" />
                         </StackPanel>
                         <Button.Style>
                             <Style BasedOn="{StaticResource MahApps.Styles.Button}" TargetType="Button">
@@ -87,6 +88,7 @@
                     <Button Width="70"
                             Height="150"
                             Margin="10,0"
+                            ToolTip="{Binding}"
                             Command="{Binding Dock_Command}"
                             CommandParameter="{Binding}">
                         <StackPanel>
@@ -95,7 +97,7 @@
                                        FontWeight="Bold"
                                        TextAlignment="Center" />
                             <TextBlock Text="{Binding Name, StringFormat='Name: {0}'}" TextAlignment="Center" />
-                            <TextBlock Text="{Binding IsFree, StringFormat='Free: {0}'}" TextAlignment="Center" />
+                            <TextBlock Text="{Binding ParkedVehicle, TargetNullValue='F R E E'}" TextAlignment="Center" />
                         </StackPanel>
                         <Button.Style>
                             <Style BasedOn="{StaticResource MahApps.Styles.Button}" TargetType="Button">

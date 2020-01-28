@@ -15,7 +15,7 @@
                        ShowSelectionIndicator="True"
                        SelectedIndex="0">
         <mah:HamburgerMenu.ItemsSource>
-            
+
             <mah:HamburgerMenuItemCollection>
                 <mah:HamburgerMenuIconItem Icon="{iconPacks:Entypo Kind=Home}" Label="Home">
                     <mah:HamburgerMenuIconItem.Tag>
@@ -28,9 +28,16 @@
                         <view:LogTable />
                     </mah:HamburgerMenuIconItem.Tag>
                 </mah:HamburgerMenuIconItem>
+
+                <mah:HamburgerMenuSeparatorItem />
                 
+                <mah:HamburgerMenuIconItem Icon="{iconPacks:Unicons Kind=Cog}" Label="Home">
+                    <mah:HamburgerMenuIconItem.Tag>
+                        <view:Settings />
+                    </mah:HamburgerMenuIconItem.Tag>
+                </mah:HamburgerMenuIconItem>
             </mah:HamburgerMenuItemCollection>
-            
         </mah:HamburgerMenu.ItemsSource>
+
     </mah:HamburgerMenu>
 </mah:MetroWindow>

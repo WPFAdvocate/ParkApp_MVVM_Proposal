@@ -1,6 +1,8 @@
 ﻿using PrakApp.Views;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
+using System.Linq;
 using System.Text;
 
 namespace PrakApp.Model
@@ -8,11 +10,31 @@ namespace PrakApp.Model
 	public class ParkItem : BaseClass
 	{
 
-		private int _ID;
-		public int ID
+		public ParkItem()
+		{
+
+		}
+
+public ParkItem(SQLiteDataReader reader)
+{
+	ID = reader.GetLong("ID");
+	Number = reader.GetInt("Number");
+	Name = reader.GetString("Name");
+	ParkedVehicle = ViewModel.Vehicles.FirstOrDefault(x => x.ID == reader.GetLong("ParkedVehicle", -1));
+}
+
+		private long _ID;
+		public long ID
 		{
 			get { return _ID; }
 			set { _ID = value; RaisePropertyChanged("ID"); }
+		}
+
+		private int _Number;
+		public int Number
+		{
+			get { return _Number; }
+			set { _Number = value; RaisePropertyChanged("Number"); }
 		}
 
 
@@ -75,7 +97,7 @@ namespace PrakApp.Model
 
 		public override string ToString()
 		{
-			return $"{ID.ToString("00")}: {Name}";
+			return $"{Number.ToString("00")}: {Name}";
 		}
 
 	}

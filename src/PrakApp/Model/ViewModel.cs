@@ -1,6 +1,8 @@
-﻿using System;
+﻿using PrakApp.Properties;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.SQLite;
 using System.Text;
 
 namespace PrakApp.Model
@@ -9,14 +11,14 @@ namespace PrakApp.Model
     {
         static ViewModel()
         {
-            // Here you will need some Logic to load the Items from your DataBase at startup
-            // For now I will create some Test Items
+            //// Here you will need some Logic to load the Items from your DataBase at startup
+            //// For now I will create some Test Items
 
-            for (int i = 1; i < 10; i++)
-            {
-                ParkItems.Add(new ParkItem { ID = i, Name = char.ConvertFromUtf32(i + 64) });
-                DockItems.Add(new ParkItem { ID = i, Name = char.ConvertFromUtf32(i + 64 + 15) });
-            }
+            //for (int i = 1; i < 10; i++)
+            //{
+            //    ParkItems.Add(new ParkItem { ID = i, Name = char.ConvertFromUtf32(i + 64) });
+            //    DockItems.Add(new ParkItem { ID = i, Name = char.ConvertFromUtf32(i + 64 + 15) });
+            //}
 
             Vehicles.Add(new Vehicle() { ID = 1, Name = "ABC", RegistrationCode = "abc-123" });
             Vehicles.Add(new Vehicle() { ID = 2, Name = "DEF", RegistrationCode = "def-456" });
@@ -24,6 +26,37 @@ namespace PrakApp.Model
 
         }
 
+        public static void GetParkAndDockItems()
+        {
+            ParkItems.Clear();
+            DockItems.Clear();
+
+            using var conn = new SQLiteConnection(Settings.Default.ConnectionString);
+
+            conn.Open();
+            string qry = "SELECT * FROM Parking;";
+            var cmd = new SQLiteCommand(qry, conn);
+
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                var parkItem = new ParkItem(reader);
+
+                // Place item based on Type
+                switch (reader.GetString("SlotType"))
+                {
+                    case "P":
+                        ParkItems.Add(parkItem);
+                        break;
+                    case "D":
+                        DockItems.Add(parkItem);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
 
         // Let's make these Items static, so we can access them from everywhere
         public static ObservableCollection<ParkItem> ParkItems { get; set; } = new ObservableCollection<ParkItem>();
