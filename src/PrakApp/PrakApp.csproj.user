@@ -19,9 +19,21 @@
     <Compile Update="Views\Settings.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Views\TruckLog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Truck_Domestic.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Views\Truck_International.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\AddTruckItem_SecurityView.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\EditLogItem.xaml">
@@ -34,6 +46,15 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\Settings.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\TruckLog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Truck_Domestic.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\Truck_International.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

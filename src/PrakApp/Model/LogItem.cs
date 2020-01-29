@@ -53,9 +53,9 @@ namespace PrakApp.Model
 			set { _ParkPosition = value; RaisePropertyChanged("ParkPosition"); }
 		}
 
-		private Vehicle _ParkedVehicle;
+		public Truck _ParkedVehicle;
 
-		public Vehicle ParkedVehicle
+		public Truck ParkedVehicle
 		{
 			get { return _ParkedVehicle; }
 			set { _ParkedVehicle = value; RaisePropertyChanged("ParkedVehicle"); }

@@ -42,11 +42,11 @@
                             CommandParameter="{Binding}">
                         <StackPanel>
                             <TextBlock Text="Parking" VerticalAlignment="Top" Margin="0,0,0,20" FontSize="17"/>
-                            <TextBlock Text="{Binding ID}"
+                            <TextBlock Text="{Binding Number}"
                                        FontSize="20"
                                        FontWeight="Bold"
                                        TextAlignment="Center" />
-                            <TextBlock Text="{Binding Name, StringFormat=' {0}'}" TextAlignment="Center" TextWrapping="Wrap" />
+                            <TextBlock Text="{Binding Name}" TextAlignment="Center" TextWrapping="Wrap" />
                             <TextBlock Text="{Binding ParkedVehicle, TargetNullValue='F R E E'}" TextAlignment="Center" />
                         </StackPanel>
                         <Button.Style>
@@ -94,7 +94,7 @@
                             CommandParameter="{Binding}">
                         <StackPanel>
                             <TextBlock Text="Dock" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="17"/>
-                            <TextBlock Text="{Binding ID, StringFormat='00'}"
+                            <TextBlock Text="{Binding Number, StringFormat='00'}"
                                        FontSize="20"
                                        FontWeight="Bold"
                                        TextAlignment="Center" />

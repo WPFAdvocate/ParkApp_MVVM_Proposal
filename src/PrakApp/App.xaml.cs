@@ -1,4 +1,5 @@
-﻿using PrakApp.Properties;
+﻿using PrakApp.Model;
+using PrakApp.Properties;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -23,6 +24,7 @@ namespace PrakApp
         {
             base.OnStartup(e);
             Settings.Default.PropertyChanged += Settings_PropertyChanged;
+            Init_ViewModel();
         }
 
         private void Settings_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -40,7 +42,7 @@ namespace PrakApp
 
         private void Init_ViewModel()
         {
-            PrakApp.Model.ViewModel.GetParkAndDockItems();
+            ViewModel.InitViewModel();
         }
 
     }

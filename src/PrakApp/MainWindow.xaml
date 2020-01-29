@@ -1,14 +1,17 @@
-﻿<mah:MetroWindow
-    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="PrakApp.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PrakApp"
-    xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
-    xmlns:view="clr-namespace:PrakApp.Views"
-    mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+﻿<mah:MetroWindow x:Class="PrakApp.MainWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+                 xmlns:local="clr-namespace:PrakApp"
+                 xmlns:model="clr-namespace:PrakApp.Model"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:view="clr-namespace:PrakApp.Views"
+                 Title="MainWindow"
+                 Width="800"
+                 Height="450"
+                 mc:Ignorable="d">
     <mah:HamburgerMenu Content="{Binding RelativeSource={RelativeSource Mode=Self}, Path=SelectedItem.Tag}"
                        ItemContainerStyle="{StaticResource My.Styles.HamburgerMenu.Win10.IconItem}"
                        ItemTemplate="{StaticResource My.DataTemplates.HamburgerMenuItem}"
@@ -30,10 +33,17 @@
                 </mah:HamburgerMenuIconItem>
 
                 <mah:HamburgerMenuSeparatorItem />
-                
-                <mah:HamburgerMenuIconItem Icon="{iconPacks:Unicons Kind=Cog}" Label="Home">
+                <mah:HamburgerMenuHeaderItem>
+
+                </mah:HamburgerMenuHeaderItem>
+                <mah:HamburgerMenuIconItem Icon="{iconPacks:Unicons Kind=Truck}" Label="International Truck">
                     <mah:HamburgerMenuIconItem.Tag>
-                        <view:Settings />
+                        <view:Truck_International/>
+                    </mah:HamburgerMenuIconItem.Tag>
+                </mah:HamburgerMenuIconItem>
+                <mah:HamburgerMenuIconItem Icon="{iconPacks:Unicons Kind=Truck}" Label="Domestic Truck">
+                    <mah:HamburgerMenuIconItem.Tag>
+                        <view:Truck_Domestic/>
                     </mah:HamburgerMenuIconItem.Tag>
                 </mah:HamburgerMenuIconItem>
             </mah:HamburgerMenuItemCollection>
