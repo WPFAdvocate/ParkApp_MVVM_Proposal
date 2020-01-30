@@ -64,7 +64,18 @@
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-
+        <StackPanel  Grid.Row="1">
+            <mah:Tile Title="Pending Trucks" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource SmallTileStyle}" Background="Blue">
+                <TextBlock FontSize="45" Text="{Binding Path=TruckLog.Count}"/>
+            </mah:Tile>
+            <mah:Tile Title="Free Parking " Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource SmallTileStyle}" Background="Blue">
+                <TextBlock FontSize="45" Text="{Binding Path=FreeParking.Count}"/>
+            </mah:Tile>
+            <mah:Tile Title="Free Docks" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource SmallTileStyle}" Background="Blue">
+                <TextBlock FontSize="45" Text="{Binding Path=FreeDocking.Count}"/>
+            </mah:Tile>
+        </StackPanel>
+        <Image Grid.Column="1" Grid.Row="1" Source="trailer.png"/>
 
         <!--  Dock  -->
         <ItemsControl Grid.Row="2"

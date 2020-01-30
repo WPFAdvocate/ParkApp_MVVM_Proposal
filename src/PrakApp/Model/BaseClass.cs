@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Windows;
+using System.Windows.Controls;
 
 namespace PrakApp.Model
 {
@@ -70,6 +72,25 @@ namespace PrakApp.Model
         {
             ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
         }
+        public static readonly DependencyProperty WindowTitleProperty = DependencyProperty.RegisterAttached("WindowTitleProperty",
+                typeof(string), typeof(UserControl),
+                new FrameworkPropertyMetadata(null, WindowTitlePropertyChanged));
+
+        public static string GetWindowTitle(DependencyObject element)
+        {
+            return (string)element.GetValue(WindowTitleProperty);
+        }
+
+        public static void SetWindowTitle(DependencyObject element, string value)
+        {
+            element.SetValue(WindowTitleProperty, value);
+        }
+
+        private static void WindowTitlePropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            Application.Current.MainWindow.Title = e.NewValue.ToString();
+        }
+
         #endregion
     }
 }

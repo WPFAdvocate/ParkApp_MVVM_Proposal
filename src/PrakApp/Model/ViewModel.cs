@@ -1,4 +1,6 @@
-﻿using PrakApp.Properties;
+﻿using MahApps.Metro.Controls;
+using MahApps.Metro.SimpleChildWindow;
+using PrakApp.Properties;
 using PrakApp.Views;
 using System;
 using System.Collections.Generic;
@@ -6,12 +8,14 @@ using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace PrakApp.Model
 {
-    public class ViewModel :BaseClass
+    public class ViewModel : BaseClass
     {
         public ViewModel()
         {
@@ -22,7 +26,40 @@ namespace PrakApp.Model
         {
             GetCompanies();
             GetTruckLogs();
+            GetFreeSlots();
             GetParkAndDockItems();
+        }
+
+        public static void GetFreeSlots()
+        {
+            ParkItems.Clear();
+            DockItems.Clear();
+
+            using var conn = new SqlConnection(Properties.Settings.Default.ConnectionString);
+
+            conn.Open();
+            string qry = "SELECT * FROM Parking WHERE ParkedVehicle = 0;";
+            var cmd = new SqlCommand(qry, conn);
+
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                var parkItem = new ParkItem(reader);
+
+                // Place item based on Type
+                switch (reader["slotType"].ToString())
+                {
+                    case "P":
+                        FreeParking.Add(parkItem);
+                        break;
+                    case "D":
+                        FreeDocking.Add(parkItem);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         public static void GetCompanies()
@@ -51,7 +88,7 @@ namespace PrakApp.Model
             using var conn = new SqlConnection(Properties.Settings.Default.ConnectionString);
 
             conn.Open();
-            string qry = "SELECT * FROM dbo.TruckLog WHERE status=0;";
+            string qry = "SELECT * FROM dbo.TruckLog WHERE status=1;";
             var cmd = new SqlCommand(qry, conn);
 
             var reader = cmd.ExecuteReader();
@@ -96,6 +133,10 @@ namespace PrakApp.Model
 
         // Let's make these Items static, so we can access them from everywhere
         public static ObservableCollection<ParkItem> ParkItems { get; set; } = new ObservableCollection<ParkItem>();
+
+        public static ObservableCollection<ParkItem> FreeParking { get; set; } = new ObservableCollection<ParkItem>();
+
+        public static ObservableCollection<ParkItem> FreeDocking { get; set; } = new ObservableCollection<ParkItem>();
         public static ObservableCollection<ParkItem> DockItems { get; set; } = new ObservableCollection<ParkItem>();
 
         public static ObservableCollection<Vehicle> Vehicles { get; set; } = new ObservableCollection<Vehicle>();
@@ -116,15 +157,31 @@ namespace PrakApp.Model
 
         private void AddTruckCommand_Execute(string param)
         {
+            UserControl dialogContent = null;
+
             if (param == "Domestic" && UserAccessLevel >= 4)
             {
-                // Do Stuff for Domestic Truck here
+                dialogContent = new Views.Truck_Domestic()
+                {
+                    DataContext = new Truck()
+                };
             }
             else if (param == "International" && UserAccessLevel >= 5)
             {
-                
+                dialogContent = new Views.Truck_International()
+                {
+                    DataContext = new Truck()
+                };
             }
-            MessageBox.Show($"You Clicked: {param}", "Congratulation");
+            var mainWindow = Application.Current.Windows.OfType<MetroWindow>().FirstOrDefault(x => x.IsActive) ?? throw new ArgumentNullException();
+            mainWindow.ShowChildWindowAsync(
+                new ChildWindow()
+                {
+                    Content = dialogContent,
+                    Title = "Add Truck",
+                    CloseOnOverlay = false,
+                    ShowCloseButton = true
+                });
         }
 
         private bool AddTruckCommand_CanExecute(string param)

@@ -7,14 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Views\trailer.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MahApps.Metro" Version="2.0.0-alpha0660" />
     <PackageReference Include="MahApps.Metro.IconPacks" Version="3.2.0" />
+    <PackageReference Include="MahApps.Metro.SimpleChildWindow" Version="2.0.0-alpha0032" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
     <PackageReference Include="System.Data.SQLite" Version="1.0.112" />
   </ItemGroup>
 
   <ItemGroup>
     <Resource Include="Views\7point.png" />
+    <Resource Include="Views\trailer.png" />
   </ItemGroup>
 
   <ItemGroup>

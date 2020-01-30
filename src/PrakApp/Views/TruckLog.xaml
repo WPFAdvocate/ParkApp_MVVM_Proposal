@@ -4,9 +4,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PrakApp.Views"
+             xmlns:model="clr-namespace:PrakApp.Model"
              mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance model:ViewModel}"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+
+        </Grid.RowDefinitions>
+
+        <DataGrid ItemsSource="{x:Static model:ViewModel.TruckLog}" 
+                  AutoGenerateColumns="True"
+                  IsReadOnly="True" />
+
+        <UniformGrid Columns="2" Grid.Row="1">
+            <Button Content="Add Domestic" Command="{Binding AddTruckCommand}" CommandParameter="Domestic"/>
+            <Button Content="Add International" Command="{Binding AddTruckCommand}" CommandParameter="International"/>
+        </UniformGrid>
+
     </Grid>
 </UserControl>

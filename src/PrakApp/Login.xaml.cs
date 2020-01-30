@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MahApps.Metro.Controls;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -8,19 +9,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PrakApp.Views
 {
-    /// <summary>
-    /// Interaction logic for TruckLog.xaml
-    /// </summary>
-    public partial class TruckLog : UserControl
-    {
-        public TruckLog()
-        {
-            InitializeComponent();
-        }
-    }
+	/// <summary>
+	/// Interaction logic for Login.xaml
+	/// </summary>
+	public partial class Login : MetroWindow
+	{
+		public Login()
+		{
+			InitializeComponent();
+		}
+	}
 }

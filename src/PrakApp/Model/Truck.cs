@@ -166,11 +166,13 @@ namespace PrakApp.Model
         private void Validate()
         {
             ClearErrors(nameof(DriverName));
-            ClearErrors(nameof(ContainerNum));
+            ClearErrors(nameof(SealNum));
+            ClearErrors(nameof(TrailerNum));
+            ClearErrors(nameof(TractorNum));
             // Test if the drivers name is not Empty
             if (string.IsNullOrWhiteSpace(DriverName))
             {
-                AddError(nameof(DriverName), "The Driver has no Name?!");
+                AddError(nameof(DriverName), "The Driver has no Name!");
             }
         }
 

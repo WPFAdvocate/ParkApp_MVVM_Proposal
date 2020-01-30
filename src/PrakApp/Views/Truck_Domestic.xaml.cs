@@ -10,13 +10,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MahApps.Metro.SimpleChildWindow;
 
 namespace PrakApp.Views
 {
 	/// <summary>
 	/// Interaction logic for Truck_Domestic.xaml
 	/// </summary>
-	public partial class Truck_Domestic : UserControl
+	public partial class Truck_Domestic
 	{
 		public Truck_Domestic()
 		{

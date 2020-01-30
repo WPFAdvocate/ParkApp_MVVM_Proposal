@@ -17,28 +17,12 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
-        <ToolBarTray Grid.Row="0">
-            <ToolBar>
-                <Button Style="{StaticResource MahApps.Styles.Button.Circle}" 
-                        Command="{Binding AddTruckCommand}"
-                        CommandParameter="Domestic"
-                        ToolTip="Domestic"
-                        Content="{iconPacks:Material Kind=TruckOutline}" Padding="5" Foreground="{DynamicResource MahApps.Brushes.Accent}"/>
-
-                <Button Style="{StaticResource MahApps.Styles.Button.Circle}" 
-                        Command="{Binding AddTruckCommand}"
-                        CommandParameter="International"
-                        ToolTip="International"
-                        Content="{iconPacks:Material Kind=Truck}" Padding="5" Foreground="{DynamicResource MahApps.Brushes.Accent}"/>
-            </ToolBar>
-        </ToolBarTray>
-
-        <DataGrid ItemsSource="{x:Static model:ViewModel.LogItems}" Grid.Row="1" AutoGenerateColumns="False">
+        <DataGrid ItemsSource="{x:Static model:ViewModel.TruckLog}" Grid.Row="1" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTemplateColumn Header="Logtime">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding LogTime}" />
+                            <TextBlock Text="{Binding TimeArrived}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
@@ -59,10 +43,10 @@
                                         ElementStyle="{StaticResource MahApps.Styles.CheckBox.DataGrid}"
                                         EditingElementStyle="{StaticResource MahApps.Styles.CheckBox.DataGrid}" />
 
-                <DataGridTemplateColumn Header="Vehicle">
+                <DataGridTemplateColumn Header="Trailer #">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <TextBlock Text="{Binding ParkedVehicle}" />
+                            <TextBlock Text="{Binding TrailerNum}" />
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                     <DataGridTemplateColumn.CellEditingTemplate>
@@ -72,6 +56,14 @@
                     </DataGridTemplateColumn.CellEditingTemplate>
 
 
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn Header="Status">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding status}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
 
                 <DataGridTemplateColumn Header="Park Position">

@@ -1,4 +1,5 @@
 ﻿using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using PrakApp.Model;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,11 @@ namespace PrakApp
         {
             InitializeComponent();
             DataContext = new ViewModel();
+        }
+
+        private async void MetroWindow_Loaded(object sender, RoutedEventArgs e)
+        {
+            LoginDialogData result = await this.ShowLoginAsync("Authentication", "Enter your credentials", new LoginDialogSettings { ColorScheme = this.MetroDialogOptions.ColorScheme });
         }
     }
 }

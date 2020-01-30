@@ -182,14 +182,10 @@
                           Stylus.IsPressAndHoldEnabled="False" />
         </Canvas>
 
-        <UniformGrid Grid.Row="1" Columns="3" Rows="3" Margin="40,80,40,0">
+        <UniformGrid Grid.Row="1" Columns="3" Rows="3" Margin="40,0,40,40">
 
             <mah:MetroHeader Header="Driver's Name" Margin="20,20,0,0">
                 <TextBox Text="{Binding DriverName, ValidatesOnNotifyDataErrors=True}" />
-            </mah:MetroHeader>
-
-            <mah:MetroHeader Header="Container #" Margin="20,20,0,0">
-                <TextBox Text="{Binding ContainerNum, ValidatesOnNotifyDataErrors=True}" />
             </mah:MetroHeader>
 
             <mah:MetroHeader Header="Seal #" Margin="20,20,0,0">
@@ -203,12 +199,27 @@
                 <TextBox Text="{Binding ContainerNum, ValidatesOnNotifyDataErrors=True}" />
             </mah:MetroHeader>
             <mah:MetroHeader HorizontalAlignment="Center" Header="Box Truck" Margin="20,20,0,0">
-                <CheckBox HorizontalAlignment="Center"/>
+                <CheckBox Name="chkBox" HorizontalAlignment="Center"/>
+            </mah:MetroHeader>
+            <mah:MetroHeader Header="Trailer #" Margin="20,20,0,0">
+                <TextBox>
+                    <TextBox.Style>
+                        <Style TargetType="{x:Type TextBox}">
+                            <Setter Property="IsEnabled" Value="False" />
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsChecked, ElementName=chkBox}" Value="false">
+                                    <Setter Property="IsEnabled" Value="True"/>
+                                    <Setter Property="Text" Value=""/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBox.Style>
+                </TextBox>
             </mah:MetroHeader>
             <mah:MetroHeader Header="Company" Margin="20,20,0,0">
                 <ComboBox ItemsSource="{x:Static model:ViewModel.Companies}"  mah:TextBoxHelper.ClearTextButton="True" />
             </mah:MetroHeader>
-            <mah:MetroHeader Header="Notes" Margin="20,20,0,0">
+            <mah:MetroHeader  Header="Notes" Margin="20,20,0,0">
                 <TextBox Text="{Binding ContainerNum, ValidatesOnNotifyDataErrors=True}" />
             </mah:MetroHeader>
         </UniformGrid>

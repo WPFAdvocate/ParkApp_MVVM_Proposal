@@ -8,9 +8,13 @@
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:view="clr-namespace:PrakApp.Views"
-                 Title="MainWindow"
+                 Title="EZDock"
                  Width="800"
                  Height="450"
+                 Loaded="MetroWindow_Loaded"
+                 OverlayBrush="White"
+                 OverlayOpacity="1"
+                 WindowStartupLocation="CenterScreen"
                  mc:Ignorable="d">
     <mah:HamburgerMenu Content="{Binding RelativeSource={RelativeSource Mode=Self}, Path=SelectedItem.Tag}"
                        ItemContainerStyle="{StaticResource My.Styles.HamburgerMenu.Win10.IconItem}"
@@ -36,14 +40,9 @@
                 <mah:HamburgerMenuHeaderItem>
 
                 </mah:HamburgerMenuHeaderItem>
-                <mah:HamburgerMenuIconItem Icon="{iconPacks:Unicons Kind=Truck}" Label="International Truck">
-                    <mah:HamburgerMenuIconItem.Tag>
-                        <view:Truck_International/>
-                    </mah:HamburgerMenuIconItem.Tag>
-                </mah:HamburgerMenuIconItem>
                 <mah:HamburgerMenuIconItem Icon="{iconPacks:Unicons Kind=Truck}" Label="Domestic Truck">
                     <mah:HamburgerMenuIconItem.Tag>
-                        <view:Truck_Domestic/>
+                        <view:TruckLog/>
                     </mah:HamburgerMenuIconItem.Tag>
                 </mah:HamburgerMenuIconItem>
             </mah:HamburgerMenuItemCollection>
