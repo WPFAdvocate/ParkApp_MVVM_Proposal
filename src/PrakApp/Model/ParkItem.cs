@@ -63,7 +63,8 @@ namespace PrakApp.Model
                     ParkPosition = parkItem,
                     ElapsedTime = new TimeSpan(1, 20, 30),
                     LogTime = DateTime.Now,
-                    IsPark = true
+                    IsPark = true,
+                    IsLoaded = true
                 };
 
                 var dlg = new EditLogItem() { DataContext = newLogItem };
@@ -81,7 +82,7 @@ namespace PrakApp.Model
                     ParkPosition = parkItem,
                     ElapsedTime = new TimeSpan(1, 20, 30),
                     LogTime = DateTime.Now,
-                    IsDock = true
+                    IsLoaded = true
                 };
 
                 var dlg = new EditLogItem() { DataContext = newLogItem };

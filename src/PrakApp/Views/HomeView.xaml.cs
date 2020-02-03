@@ -20,7 +20,7 @@ namespace PrakApp.Views
     {
         public HomeView()
         {
-            InitializeComponent();
+             InitializeComponent();
         }
     }
 }

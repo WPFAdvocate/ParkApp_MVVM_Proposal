@@ -9,6 +9,25 @@
              d:DesignHeight="450"
              d:DesignWidth="800"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LargeTileStyle" TargetType="mah:Tile">
+                <Setter Property="Height" Value="125" />
+                <Setter Property="TextOptions.TextFormattingMode" Value="Display" />
+                <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+                <Setter Property="TitleFontSize" Value="14" />
+                <Setter Property="Width" Value="300" />
+            </Style>
+
+            <Style x:Key="SmallTileStyle" TargetType="mah:Tile">
+                <Setter Property="Height" Value="125" />
+                <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+                <Setter Property="TextOptions.TextRenderingMode" Value="ClearType" />
+                <Setter Property="TitleFontSize" Value="10" />
+                <Setter Property="Width" Value="147" />
+            </Style>
+        </ResourceDictionary>
+    </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -22,7 +41,8 @@
                 <ControlTemplate>
                     <ScrollViewer x:Name="ScrollViewer"
                                   Padding="{TemplateBinding Padding}"
-                                  VerticalScrollBarVisibility="Disabled">
+                                  VerticalScrollBarVisibility="Disabled"
+                                  PanningMode="Both">
                         <ItemsPresenter />
                     </ScrollViewer>
                 </ControlTemplate>
@@ -85,7 +105,8 @@
                 <ControlTemplate>
                     <ScrollViewer x:Name="ScrollViewer"
                                   Padding="{TemplateBinding Padding}"
-                                  VerticalScrollBarVisibility="Disabled">
+                                  VerticalScrollBarVisibility="Disabled"
+                                  PanningMode="Both">
                         <ItemsPresenter />
                     </ScrollViewer>
                 </ControlTemplate>

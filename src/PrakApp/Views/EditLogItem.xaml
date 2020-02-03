@@ -53,6 +53,13 @@
                 </StackPanel>
             </mah:MetroHeader>
 
+            <mah:MetroHeader Header="Type">
+                <StackPanel>
+                    <RadioButton Content="Loaded" IsChecked="{Binding IsLoaded}" />
+                    <RadioButton Content="Unloaded" IsChecked="{Binding IsUnloaded}" />
+                </StackPanel>
+            </mah:MetroHeader>
+
         </StackPanel>
 
         <UniformGrid Grid.Row="1" Columns="2">

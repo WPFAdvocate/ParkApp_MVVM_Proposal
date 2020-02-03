@@ -20,7 +20,8 @@
                        ItemContainerStyle="{StaticResource My.Styles.HamburgerMenu.Win10.IconItem}"
                        ItemTemplate="{StaticResource My.DataTemplates.HamburgerMenuItem}"
                        ShowSelectionIndicator="True"
-                       SelectedIndex="0">
+                       SelectedIndex="0"
+                       Name="Menu_Title">
         <mah:HamburgerMenu.ItemsSource>
 
             <mah:HamburgerMenuItemCollection>

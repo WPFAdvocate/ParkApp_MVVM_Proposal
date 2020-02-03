@@ -25,11 +25,28 @@ namespace PrakApp.Model
         public static void InitViewModel()
         {
             GetCompanies();
+            GetStates();
             GetTruckLogs();
             GetFreeSlots();
             GetParkAndDockItems();
         }
 
+        public static void GetStates()
+        {
+            States.Clear();
+            using var conn = new SqlConnection(Properties.Settings.Default.ConnectionString);
+
+            conn.Open();
+            string qry = "SELECT * FROM dbo.State";
+            var cmd = new SqlCommand(qry, conn);
+
+            var reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                States.Add(new States(reader));
+            }
+        }
         public static void GetFreeSlots()
         {
             ParkItems.Clear();
@@ -142,6 +159,8 @@ namespace PrakApp.Model
         public static ObservableCollection<Vehicle> Vehicles { get; set; } = new ObservableCollection<Vehicle>();
         public static ObservableCollection<Truck> TruckLog { get; set; } = new ObservableCollection<Truck>();
         public static ObservableCollection<Company> Companies { get; set; } = new ObservableCollection<Company>();
+
+        public static ObservableCollection<States> States { get; set; } = new ObservableCollection<States>();
 
         public static ObservableCollection<LogItem> LogItems { get; set; } = new ObservableCollection<LogItem>();
 

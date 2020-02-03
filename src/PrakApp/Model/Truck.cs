@@ -32,6 +32,7 @@ namespace PrakApp.Model
             status = reader.GetString("status");
             TimeArrived = reader.GetDateTime("TimeArrived");
             TimeDeparted = reader.GetNullableDateTime("TimeDeparted");
+            Loaded = reader.GetInt("Loaded");
         }
 
         private long _ID;
@@ -39,6 +40,13 @@ namespace PrakApp.Model
         {
             get { return _ID; }
             set { _ID = value; RaisePropertyChanged("ID"); }
+        }
+
+        private long _Loaded;
+        public long Loaded
+        {
+            get { return _Loaded; }
+            set { _Loaded = value; RaisePropertyChanged("Loaded"); }
         }
 
         // Todo: Replace This wih CompanyItem
@@ -92,7 +100,7 @@ namespace PrakApp.Model
         public string SealNum
         {
             get { return _SealNum; }
-            set { _SealNum = value; RaisePropertyChanged("SealNum"); }
+            set { _SealNum = value; RaisePropertyChanged("SealNum"); Validate(); }
         }
 
 
@@ -118,6 +126,13 @@ namespace PrakApp.Model
         {
             get { return _status; }
             set { _status = value; RaisePropertyChanged("status"); }
+        }
+
+        private string _notes;
+        public string notes
+        {
+            get { return _notes; }
+            set { _notes = value; RaisePropertyChanged("Notes"); }
         }
 
         private DateTime _TimeArrived;
@@ -173,6 +188,11 @@ namespace PrakApp.Model
             if (string.IsNullOrWhiteSpace(DriverName))
             {
                 AddError(nameof(DriverName), "The Driver has no Name!");
+            }
+
+           if (string.IsNullOrEmpty(SealNum) || SealNum.Length > 10)
+            {
+                AddError(nameof(SealNum), "Invalid Seal number.");
             }
         }
 

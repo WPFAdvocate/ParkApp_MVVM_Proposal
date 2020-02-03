@@ -46,6 +46,31 @@ namespace PrakApp.Model
 			}
 		}
 
+		private bool _IsLoaded;
+		public bool IsLoaded
+		{
+			get { return _IsLoaded; }
+			set
+			{
+				_IsLoaded = value; RaisePropertyChanged("Loaded");
+				// Do not allow Load and unloaded
+				if (value == true) IsLoaded = false;
+			}
+		}
+
+		private bool _IsUnloaded;
+		public bool IsUnloaded
+		{
+			get { return _IsUnloaded; }
+			set
+			{
+				_IsUnloaded = value;
+				RaisePropertyChanged("IsUnloaded");
+				// Do not allow load and Unloaded
+				if (value == true) IsUnloaded = false;
+			}
+		}
+
 		private ParkItem _ParkPosition;
 		public ParkItem ParkPosition
 		{

@@ -7,6 +7,9 @@
     </ApplicationDefinition>
   </ItemGroup>
   <ItemGroup>
+    <Compile Update="ChangePassword.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Views\EditLogItem.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -37,6 +40,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\AddTruckItem_SecurityView.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChangePassword.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\EditLogItem.xaml">
