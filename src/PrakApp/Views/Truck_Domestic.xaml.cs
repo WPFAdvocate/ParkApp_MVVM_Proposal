@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,6 +24,11 @@ namespace PrakApp.Views
 		public Truck_Domestic()
 		{
 			InitializeComponent();
+		}
+
+		private void btnSubmit_Click(object sender, RoutedEventArgs e)
+		{
+			
 		}
 	}
 }

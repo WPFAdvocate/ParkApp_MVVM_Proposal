@@ -67,9 +67,10 @@ namespace PrakApp.Views
 										validPassword = BCrypt.Net.BCrypt.Verify(password, hashedPassword);
 
 
-										if (validPassword)
+										if (validPassword)	
 										{
 											MainWindow mw = new MainWindow();
+											this.Close();
 											mw.Show();
 
 										}

@@ -29,9 +29,5 @@ namespace PrakApp
             DataContext = new ViewModel();
         }
 
-        private async void MetroWindow_Loaded(object sender, RoutedEventArgs e)
-        {
-            LoginDialogData result = await this.ShowLoginAsync("Authentication", "Enter your credentials", new LoginDialogSettings { ColorScheme = this.MetroDialogOptions.ColorScheme });
-        }
     }
 }

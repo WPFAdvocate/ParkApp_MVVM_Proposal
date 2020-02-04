@@ -22,5 +22,10 @@ namespace PrakApp.Views
 		{
 			InitializeComponent();
 		}
+
+		private void btnSubmit_Click(object sender, RoutedEventArgs e)
+		{
+
+		}
 	}
 }

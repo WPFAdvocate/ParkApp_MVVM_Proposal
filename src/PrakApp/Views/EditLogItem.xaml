@@ -21,9 +21,7 @@
             <mah:MetroHeader Header="Date">
                 <mah:DateTimePicker IsClockVisible="True" SelectedDateTime="{Binding LogTime}" />
             </mah:MetroHeader>
-            <mah:MetroHeader Header="Elapsed Time">
-                <TextBox Text="{Binding ElapsedTime}" />
-            </mah:MetroHeader>
+
 
             <mah:MetroHeader Header="Vehicle">
                 <ComboBox ItemsSource="{x:Static model:ViewModel.TruckLog}" SelectedItem="{Binding ParkedVehicle}" mah:TextBoxHelper.ClearTextButton="True" />
@@ -55,8 +53,8 @@
 
             <mah:MetroHeader Header="Type">
                 <StackPanel>
-                    <RadioButton Content="Loaded" IsChecked="{Binding IsLoaded}" />
-                    <RadioButton Content="Unloaded" IsChecked="{Binding IsUnloaded}" />
+                    <RadioButton Content="Loaded" IsChecked="{Binding Loaded}"/>
+                    <RadioButton Content="Unloaded" IsChecked="{Binding Unloaded}"/>
                 </StackPanel>
             </mah:MetroHeader>
 

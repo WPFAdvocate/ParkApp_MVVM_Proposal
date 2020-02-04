@@ -46,28 +46,28 @@ namespace PrakApp.Model
 			}
 		}
 
-		private bool _IsLoaded;
-		public bool IsLoaded
+		private bool _Loaded;
+		public bool Loaded
 		{
-			get { return _IsLoaded; }
+			get { return _Loaded; }
 			set
 			{
-				_IsLoaded = value; RaisePropertyChanged("Loaded");
+				_Loaded = value; RaisePropertyChanged("Loaded");
 				// Do not allow Load and unloaded
-				if (value == true) IsLoaded = false;
+				if (value == true) Unloaded = false;
 			}
 		}
 
-		private bool _IsUnloaded;
-		public bool IsUnloaded
+		private bool _Unloaded;
+		public bool Unloaded
 		{
-			get { return _IsUnloaded; }
+			get { return _Unloaded; }
 			set
 			{
-				_IsUnloaded = value;
-				RaisePropertyChanged("IsUnloaded");
+				_Unloaded = value;
+				RaisePropertyChanged("Unloaded");
 				// Do not allow load and Unloaded
-				if (value == true) IsUnloaded = false;
+				if (value == true) Loaded = false;
 			}
 		}
 

@@ -21,19 +21,19 @@ namespace PrakApp.Model
             ID = reader.GetInt("ID");
             Company = ViewModel.Companies.FirstOrDefault(x => x.ID == reader.GetInt("Company", -1));
             DriverName = reader.GetString("DriverName");
-            DLicenseNum = reader.GetString("DLicenseNum");
-            ContainerNum = reader.GetString("ContainerNum");
             DLicenseState = reader.GetString("DLicenseState");
             TractorNum = reader.GetString("TractorNum");
             TrailerNum = reader.GetString("TrailerNum");
             SealNum = reader.GetString("SealNum");
             RemovedTrailerNum = reader.GetString("RemovedTrailerNum");
-            BoxTruck = reader.GetBool("BoxTruck", false);
-            status = reader.GetString("status");
+            BoxTruck = reader.GetLong("BoxTruck");
+            status = reader.GetLong("status");
             TimeArrived = reader.GetDateTime("TimeArrived");
             TimeDeparted = reader.GetNullableDateTime("TimeDeparted");
-            Loaded = reader.GetInt("Loaded");
+            Loaded = reader.GetLong("Loaded");
         }
+
+        
 
         private long _ID;
         public long ID
@@ -64,13 +64,6 @@ namespace PrakApp.Model
             set { _DriverName = value; RaisePropertyChanged("DriverName"); Validate(); }
         }
 
-
-        private string _DLicenseNum;
-        public string DLicenseNum
-        {
-            get { return _DLicenseNum; }
-            set { _DLicenseNum = value; RaisePropertyChanged("DLicenseNum"); }
-        }
 
 
         // Todo: Replace this with State
@@ -112,17 +105,17 @@ namespace PrakApp.Model
         }
 
 
-        private bool _BoxTruck;
-        public bool BoxTruck
+        private long _BoxTruck;
+        public long BoxTruck
         {
             get { return _BoxTruck; }
             set { _BoxTruck = value; RaisePropertyChanged("BoxTruck"); }
         }
 
 
-        private string _status;
+        private long _status;
 
-        public string status
+        public long status
         {
             get { return _status; }
             set { _status = value; RaisePropertyChanged("status"); }
@@ -165,13 +158,6 @@ namespace PrakApp.Model
         }
 
 
-        private string _ContainerNum;
-        public string ContainerNum
-        {
-            get { return _ContainerNum; }
-            set { _ContainerNum = value; RaisePropertyChanged("ContainerNum"); Validate(); }
-        }
-
         public override string ToString()
         {
             return $"Trailer: {TrailerNum}";
@@ -182,7 +168,6 @@ namespace PrakApp.Model
         {
             ClearErrors(nameof(DriverName));
             ClearErrors(nameof(SealNum));
-            ClearErrors(nameof(TrailerNum));
             ClearErrors(nameof(TractorNum));
             // Test if the drivers name is not Empty
             if (string.IsNullOrWhiteSpace(DriverName))
@@ -193,6 +178,10 @@ namespace PrakApp.Model
            if (string.IsNullOrEmpty(SealNum) || SealNum.Length > 10)
             {
                 AddError(nameof(SealNum), "Invalid Seal number.");
+            }
+            if (string.IsNullOrEmpty(TractorNum) || TractorNum.Length > 10)
+            {
+                AddError(nameof(TractorNum), "Invalid Trailer number.");
             }
         }
 

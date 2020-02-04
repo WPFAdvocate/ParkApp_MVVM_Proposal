@@ -68,6 +68,7 @@
                                        TextAlignment="Center" />
                             <TextBlock Text="{Binding Name}" TextAlignment="Center" TextWrapping="Wrap" />
                             <TextBlock Text="{Binding ParkedVehicle, TargetNullValue='F R E E'}" TextAlignment="Center" />
+                            <TextBlock Text="{Binding ParkedVehicle.Loaded}" TextAlignment="Center" />
                         </StackPanel>
                         <Button.Style>
                             <Style BasedOn="{StaticResource MahApps.Styles.Button}" TargetType="Button">
@@ -76,6 +77,16 @@
                                     <DataTrigger Binding="{Binding IsFree}" Value="False">
                                         <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent}" />
                                         <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ParkedVehicle.Loaded}" Value="0">
+                                        <Setter Property="Background" Value="Orange" />
+                                        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+                                        <Setter Property="Content" Value="Unloaded"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ParkedVehicle.Loaded}" Value="1">
+                                        <Setter Property="Background" Value="Orange" />
+                                        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+                                        <Setter Property="Content" Value="Loaded"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -132,6 +143,8 @@
                                        TextAlignment="Center" />
                             <TextBlock Text="{Binding Name, StringFormat=' {0}'}" TextAlignment="Center" TextWrapping="Wrap" />
                             <TextBlock Text="{Binding ParkedVehicle, TargetNullValue='F R E E'}" TextAlignment="Center" />
+                            <TextBlock Text="{Binding ParkedVehicle.Loaded}" TextAlignment="Center" />
+                            
                         </StackPanel>
                         <Button.Style>
                             <Style BasedOn="{StaticResource MahApps.Styles.Button}" TargetType="Button">
@@ -139,6 +152,14 @@
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding IsFree}" Value="False">
                                         <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent}" />
+                                        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ParkedVehicle.Loaded}" Value="0">
+                                        <Setter Property="Background" Value="MediumSeaGreen" />
+                                        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ParkedVehicle.Loaded}" Value="1">
+                                        <Setter Property="Background" Value="Orange" />
                                         <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
                                     </DataTrigger>
                                 </Style.Triggers>

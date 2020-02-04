@@ -43,6 +43,15 @@
                                         ElementStyle="{StaticResource MahApps.Styles.CheckBox.DataGrid}"
                                         EditingElementStyle="{StaticResource MahApps.Styles.CheckBox.DataGrid}" />
 
+                <DataGridCheckBoxColumn Header="Loaded"
+                                        Binding="{Binding Path=Loaded, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        ElementStyle="{StaticResource MahApps.Styles.CheckBox.DataGrid}"
+                                        EditingElementStyle="{StaticResource MahApps.Styles.CheckBox.DataGrid}" />
+                <DataGridCheckBoxColumn Header="Unloaded"
+                                        Binding="{Binding Path=Unloaded , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                        ElementStyle="{StaticResource MahApps.Styles.CheckBox.DataGrid}"
+                                        EditingElementStyle="{StaticResource MahApps.Styles.CheckBox.DataGrid}" />
+
                 <DataGridTemplateColumn Header="Trailer #">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
