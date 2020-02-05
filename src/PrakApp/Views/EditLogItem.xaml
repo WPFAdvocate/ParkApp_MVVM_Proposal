@@ -51,10 +51,9 @@
                 </StackPanel>
             </mah:MetroHeader>
 
-            <mah:MetroHeader Header="Type">
+            <mah:MetroHeader Header="Loaded">
                 <StackPanel>
-                    <RadioButton Content="Loaded" IsChecked="{Binding Loaded}"/>
-                    <RadioButton Content="Unloaded" IsChecked="{Binding Unloaded}"/>
+                    <CheckBox Content="Loaded" IsChecked="{Binding ParkedVehicle.Loaded}" />
                 </StackPanel>
             </mah:MetroHeader>
 
@@ -62,7 +61,7 @@
 
         <UniformGrid Grid.Row="1" Columns="2">
             <Button Content="Cancel" Click="CloseClick" />
-            <Button Content="Save and Exit" Click="SaveAndCloseClick" />
+            <Button Content="Save and Exit" Click="SaveAndCloseClick" Command="{Binding ParkedVehicle.SaveIntoDB_Command}" />
         </UniformGrid>
     </Grid>
 </mah:MetroWindow>

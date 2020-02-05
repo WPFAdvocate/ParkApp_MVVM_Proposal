@@ -57,18 +57,38 @@
                     <Button Width="100"
                             Height="180"
                             Margin="10,0"
-                            ToolTip="{Binding}"
                             Command="{Binding Park_Command}"
-                            CommandParameter="{Binding}">
+                            CommandParameter="{Binding}"
+                            ToolTip="{Binding}">
                         <StackPanel>
-                            <TextBlock Text="Parking" VerticalAlignment="Top" Margin="0,0,0,20" FontSize="17"/>
-                            <TextBlock Text="{Binding Number}"
-                                       FontSize="20"
+                            <TextBlock Margin="0,0,0,20"
+                                       VerticalAlignment="Top"
+                                       FontSize="17"
+                                       Text="Parking" />
+                            <TextBlock FontSize="20"
                                        FontWeight="Bold"
+                                       Text="{Binding Number}"
                                        TextAlignment="Center" />
-                            <TextBlock Text="{Binding Name}" TextAlignment="Center" TextWrapping="Wrap" />
+                            <TextBlock Text="{Binding Name}"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap" />
                             <TextBlock Text="{Binding ParkedVehicle, TargetNullValue='F R E E'}" TextAlignment="Center" />
-                            <TextBlock Text="{Binding ParkedVehicle.Loaded}" TextAlignment="Center" />
+                            <TextBlock
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap" >
+                            <TextBlock.Style>
+                                    <Style BasedOn="{StaticResource MahApps.Styles.TextBlock}" TargetType="TextBlock">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding ParkedVehicle.Loaded}" Value="False">
+                                                <Setter Property="Text" Value="Unloaded"/>
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding ParkedVehicle.Loaded}" Value="True">
+                                                <Setter Property="Text" Value="Loaded"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </TextBlock.Style>
+                            </TextBlock>
                         </StackPanel>
                         <Button.Style>
                             <Style BasedOn="{StaticResource MahApps.Styles.Button}" TargetType="Button">
@@ -78,15 +98,13 @@
                                         <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent}" />
                                         <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
                                     </DataTrigger>
-                                    <DataTrigger Binding="{Binding ParkedVehicle.Loaded}" Value="0">
+                                    <DataTrigger Binding="{Binding ParkedVehicle.Loaded}" Value="True">
                                         <Setter Property="Background" Value="Orange" />
                                         <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
-                                        <Setter Property="Content" Value="Unloaded"/>
                                     </DataTrigger>
-                                    <DataTrigger Binding="{Binding ParkedVehicle.Loaded}" Value="1">
-                                        <Setter Property="Background" Value="Orange" />
+                                    <DataTrigger Binding="{Binding ParkedVehicle.Loaded}" Value="False">
+                                        <Setter Property="Background" Value="YellowGreen" />
                                         <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
-                                        <Setter Property="Content" Value="Loaded"/>
                                     </DataTrigger>
                                 </Style.Triggers>
                             </Style>
@@ -132,19 +150,22 @@
                     <Button Width="100"
                             Height="180"
                             Margin="10,0"
-                            ToolTip="{Binding}"
                             Command="{Binding Dock_Command}"
-                            CommandParameter="{Binding}">
+                            CommandParameter="{Binding}"
+                            ToolTip="{Binding}">
                         <StackPanel>
-                            <TextBlock Text="Dock" VerticalAlignment="Top" HorizontalAlignment="Center" FontSize="17"/>
-                            <TextBlock Text="{Binding Number, StringFormat='00'}"
-                                       FontSize="20"
+                            <TextBlock HorizontalAlignment="Center"
+                                       VerticalAlignment="Top"
+                                       FontSize="17"
+                                       Text="Dock" />
+                            <TextBlock FontSize="20"
                                        FontWeight="Bold"
+                                       Text="{Binding Number, StringFormat='00'}"
                                        TextAlignment="Center" />
-                            <TextBlock Text="{Binding Name, StringFormat=' {0}'}" TextAlignment="Center" TextWrapping="Wrap" />
+                            <TextBlock Text="{Binding Name}"
+                                       TextAlignment="Center"
+                                       TextWrapping="Wrap" />
                             <TextBlock Text="{Binding ParkedVehicle, TargetNullValue='F R E E'}" TextAlignment="Center" />
-                            <TextBlock Text="{Binding ParkedVehicle.Loaded}" TextAlignment="Center" />
-                            
                         </StackPanel>
                         <Button.Style>
                             <Style BasedOn="{StaticResource MahApps.Styles.Button}" TargetType="Button">
@@ -152,14 +173,6 @@
                                 <Style.Triggers>
                                     <DataTrigger Binding="{Binding IsFree}" Value="False">
                                         <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Accent}" />
-                                        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding ParkedVehicle.Loaded}" Value="0">
-                                        <Setter Property="Background" Value="MediumSeaGreen" />
-                                        <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
-                                    </DataTrigger>
-                                    <DataTrigger Binding="{Binding ParkedVehicle.Loaded}" Value="1">
-                                        <Setter Property="Background" Value="Orange" />
                                         <Setter Property="Foreground" Value="{DynamicResource MahApps.Brushes.IdealForeground}" />
                                     </DataTrigger>
                                 </Style.Triggers>

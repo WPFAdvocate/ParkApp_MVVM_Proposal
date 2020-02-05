@@ -14,6 +14,7 @@ namespace PrakApp.Model
         public Truck()
         {
             Validate();
+            SaveIntoDB_Command = new RelayCommand(SaveIntoDB_Command_Execute, SaveIntoDB_Command_CanExecute);
         }
 
         public Truck(SqlDataReader reader) : this()
@@ -30,7 +31,6 @@ namespace PrakApp.Model
             status = reader.GetLong("status");
             TimeArrived = reader.GetDateTime("TimeArrived");
             TimeDeparted = reader.GetNullableDateTime("TimeDeparted");
-            Loaded = reader.GetLong("Loaded");
         }
 
         
@@ -42,8 +42,8 @@ namespace PrakApp.Model
             set { _ID = value; RaisePropertyChanged("ID"); }
         }
 
-        private long _Loaded;
-        public long Loaded
+        private bool _Loaded;
+        public bool Loaded
         {
             get { return _Loaded; }
             set { _Loaded = value; RaisePropertyChanged("Loaded"); }
@@ -156,6 +156,66 @@ namespace PrakApp.Model
                 }
             }
         }
+
+        #region Commands
+
+        public RelayCommand SaveIntoDB_Command { get; private set; }
+
+        void SaveIntoDB_Command_Execute(object param)
+        {
+            /*Debug.Print("TEST");
+            using (SqlConnection con = new SqlConnection(Properties.Settings.Default.ConnectionString))
+            {
+                con.Open();
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM TruckLog where SealNum = @SN"))
+                {
+                    cmd.Parameters.AddWithValue("@SN", SealNum);
+                    SqlDataReader dr = cmd.ExecuteReader();
+                    if (!dr.HasRows)
+                    {
+                        using (SqlCommand cmd2 = new SqlCommand("INSERT INTO TruckLog(DriverName, SealNum, DLicenseState, TractorNum, BoxTruck, TrailerNum, Company, TimeArrived) VALUES (@D ,@SN, @DS, @Trac, @BT, @Trail, @C, @TA)", con))
+                        {
+                            cmd2.Parameters.AddWithValue("@D", DriverName);
+                            cmd2.Parameters.AddWithValue("@SN", SealNum);
+                            cmd2.Parameters.AddWithValue("@DS", DLicenseState.Substring(0, 2));
+                            cmd2.Parameters.AddWithValue("@Trac", TractorNum);
+                            cmd2.Parameters.AddWithValue("@BT", BoxTruck);
+                            cmd2.Parameters.AddWithValue("@Trail", TrailerNum);
+                            cmd2.Parameters.AddWithValue("@C", Company);
+                            cmd2.Parameters.AddWithValue("@TA", TimeArrived);
+
+                            cmd2.ExecuteNonQuery();
+
+                        }
+                    }
+                    else
+                    {
+                        using (SqlCommand cmd3 = new SqlCommand("INSERT INTO TruckLog(DriverName, SealNum, DLicenseState, TractorNum, BoxTruck, TrailerNum, Company, TimeArrived) VALUES (@D ,@SN, @DS, @Trac, @BT, @Trail, @C, @TA)", con))
+                        {
+                            cmd3.Parameters.AddWithValue("@D", DriverName);
+                            cmd3.Parameters.AddWithValue("@SN", SealNum);
+                            cmd3.Parameters.AddWithValue("@DS", DLicenseState.Substring(0, 2));
+                            cmd3.Parameters.AddWithValue("@Trac", TractorNum);
+                            cmd3.Parameters.AddWithValue("@BT", BoxTruck);
+                            cmd3.Parameters.AddWithValue("@Trail", TrailerNum);
+                            cmd3.Parameters.AddWithValue("@C", Company);
+                            cmd3.Parameters.AddWithValue("@TA", TimeArrived);
+
+                            cmd3.ExecuteNonQuery();
+
+                        }
+                    }
+                }
+            }*/
+        }
+
+        bool SaveIntoDB_Command_CanExecute(object param)
+        {
+           //Do validation here
+            return Loaded;
+        }
+
+        #endregion
 
 
         public override string ToString()

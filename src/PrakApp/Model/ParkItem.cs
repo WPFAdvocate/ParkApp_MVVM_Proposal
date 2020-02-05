@@ -17,7 +17,6 @@ namespace PrakApp.Model
             Number = reader.GetInt("Number");
             Name = reader.GetString("Name");
             ParkedVehicle = ViewModel.TruckLog.FirstOrDefault(x => x.ID == reader.GetInt("ParkedVehicle", -1));
-            Loaded = reader.GetInt("Loaded");
         }
 
         private int _ID;
@@ -42,14 +41,6 @@ namespace PrakApp.Model
             set { _Name = value; RaisePropertyChanged("Name"); }
         }
 
-        private int _Loaded;
-        public int Loaded
-        {
-            get { return _Loaded; }
-            set { _Loaded = value; RaisePropertyChanged("ID"); }
-        }
-
-
         private Truck _ParkedVehicle;
         public Truck ParkedVehicle
         {
@@ -69,10 +60,9 @@ namespace PrakApp.Model
                 var newLogItem = new LogItem()
                 {
                     ParkPosition = parkItem,
-                    ElapsedTime = new TimeSpan(1, 20, 30),
+                    ParkedVehicle = parkItem.ParkedVehicle,
                     LogTime = DateTime.Now,
                     IsPark = true,
-                    Loaded = true,
                 };
 
                 var dlg = new EditLogItem() { DataContext = newLogItem };
@@ -88,10 +78,9 @@ namespace PrakApp.Model
                 var newLogItem = new LogItem()
                 {
                     ParkPosition = parkItem,
-                    ElapsedTime = new TimeSpan(1, 20, 30),
+                    ParkedVehicle = parkItem.ParkedVehicle,
                     LogTime = DateTime.Now,
                     IsDock = true,
-                    Loaded = true,
                 };
 
                 var dlg = new EditLogItem() { DataContext = newLogItem };

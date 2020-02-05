@@ -5,7 +5,7 @@
              xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
              xmlns:prop="clr-namespace:PrakApp.Properties"
              Exit="Application_Exit"
-             StartupUri="Login.xaml">
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

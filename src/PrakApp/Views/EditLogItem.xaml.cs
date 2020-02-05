@@ -35,7 +35,7 @@ namespace PrakApp.Views
         private void SaveAndCloseClick(object sender, RoutedEventArgs e)
         {
             ViewModel.LogItems.Add(LogItem);
-            LogItem.ParkPosition.ParkedVehicle = LogItem.ParkedVehicle;
+            LogItem.ParkPosition.ParkedVehicle = LogItem?.ParkedVehicle;
             // Do some Save And Test Stuff here
             Close();
         }
