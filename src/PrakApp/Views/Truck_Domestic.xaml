@@ -56,7 +56,7 @@
                     <ComboBox Name="cmbCompany" ItemsSource="{x:Static model:ViewModel.Companies}"  mah:TextBoxHelper.ClearTextButton="True" />
                 </mah:MetroHeader>
 
-                <Button Name="btnSubmit" Command="{Binding ParkedVehicle.SaveIntoDB_Command}" Margin="20,20,20,20">
+                <Button Name="btnSubmit" Command="{Binding SaveIntoDB_Command}" Margin="20,20,20,20">
                     
                     <TextBlock Text="Submit" FontSize="14"/>
                 </Button>

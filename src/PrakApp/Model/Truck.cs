@@ -212,7 +212,7 @@ namespace PrakApp.Model
         bool SaveIntoDB_Command_CanExecute(object param)
         {
            //Do validation here
-            return Loaded;
+            return true;
         }
 
         #endregion
